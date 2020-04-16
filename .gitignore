@@ -1,0 +1,6 @@
+secret.tfvars
+.DS_Store
+.terraform
+gcp-sa-key.json
+backend.tf
+terraform.tfvars

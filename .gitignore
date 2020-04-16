@@ -3,4 +3,3 @@ secret.tfvars
 .terraform
 gcp-sa-key.json
 backend.tf
-terraform.tfvars

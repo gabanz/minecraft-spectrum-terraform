@@ -8,7 +8,6 @@ resource "cloudflare_spectrum_application" "minecraft_proxy" {
   zone_id      = var.cloudflare_zone_id
   protocol     = "Minecraft"
   traffic_type = "direct"
-  argo_smart_routing = false
   dns {
     type = "CNAME"
     name = var.cloudflare_spectrum_hostname

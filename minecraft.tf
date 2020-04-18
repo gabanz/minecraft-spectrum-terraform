@@ -68,6 +68,9 @@ resource "google_compute_network" "minecraft" {
   name = "minecraft"
 }
 
+# Get the IP ranges of Cloudflare edge nodes
+data "cloudflare_ip_ranges" "cloudflare" {}
+
 # Open the firewall for Minecraft traffic
 resource "google_compute_firewall" "minecraft" {
   name    = "minecraft"
@@ -86,6 +89,7 @@ resource "google_compute_firewall" "minecraft" {
     protocol = "tcp"
     ports    = ["22"]
   }
-  source_ranges = ["0.0.0.0/0"]
+  # Lockdown the origin server to allow only traffic from Cloudflare, deny all others
+  source_ranges = data.cloudflare_ip_ranges.cloudflare.ipv4_cidr_blocks
   target_tags   = ["minecraft"]
 }

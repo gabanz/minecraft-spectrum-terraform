@@ -7,7 +7,7 @@ locals {
 # Define a Spectrum application that proxies Minecraft traffic
 resource "cloudflare_spectrum_application" "minecraft_proxy" {
   zone_id      = var.cloudflare_zone_id
-  protocol     = "Minecraft"
+  protocol     = "minecraft"
   traffic_type = "direct"
   dns {
     type = "CNAME"
@@ -22,7 +22,7 @@ resource "cloudflare_spectrum_application" "minecraft_proxy" {
 # Define a Spectrum application that proxies SSH traffic
 resource "cloudflare_spectrum_application" "ssh_proxy" {
   zone_id      = var.cloudflare_zone_id
-  protocol     = "SSH"
+  protocol     = "ssh"
   traffic_type = "direct"
   dns {
     type = "CNAME"
